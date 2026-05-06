@@ -51,7 +51,7 @@ def run_reconciliation():
             similarity = fuzz.token_sort_ratio(str(bank_txn.narration), str(int_txn.description))
             
             # Threshold for string match
-            if similarity > 50 and similarity > best_score:
+            if similarity >= 20 and similarity > best_score:
                 best_score = similarity
                 best_match = int_txn
                 
