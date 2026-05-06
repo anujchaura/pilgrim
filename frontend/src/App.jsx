@@ -154,7 +154,6 @@ function App() {
           <div style={{ display: 'flex', gap: '1rem' }}>
             {activeTab === 'dashboard' && (
               <button className="btn btn-secondary" onClick={downloadDashboard} disabled={loading}>
-                <Download size={18} />
                 Download PDF
               </button>
             )}
@@ -164,7 +163,6 @@ function App() {
               </button>
             )}
             <button className="btn" onClick={handleReconcile} disabled={loading}>
-              <RefreshCw size={18} />
               Run Reconciliation
             </button>
           </div>
