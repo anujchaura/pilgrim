@@ -1,6 +1,6 @@
 date,description,amount,category
-01-10-2023,Food delivery Swiggy,500,Food
-02-10-2023,Monthly Salary,50000,Payroll
-04-10-2023,AWS Hosting,1500,Cloud/Hosting
-05-10-2023,Office commute Uber,300,Travel
-07-10-2023,Client Payment missing,25000,Revenue
+2023-10-01,Food delivery Swiggy,500.00,Food
+2023-10-02,Monthly Salary,50000.00,Payroll
+2023-10-03,AWS Hosting,1500.00,Cloud/Hosting
+2023-10-05,Office commute Uber,300.00,Travel
+2023-10-06,Client Payment missing,25000.00,Revenue

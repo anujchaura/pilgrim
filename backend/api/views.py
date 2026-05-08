@@ -8,6 +8,15 @@ from .models import BankStatement, InternalLedger, NormalizedLedger
 from .serializers import NormalizedLedgerSerializer
 from .services import run_reconciliation
 
+def parse_date(date_str):
+    """Try multiple date formats"""
+    for fmt in ('%Y-%m-%d', '%d-%m-%Y', '%m/%d/%Y', '%d/%m/%Y'):
+        try:
+            return datetime.strptime(date_str.strip(), fmt).date()
+        except ValueError:
+            continue
+    raise ValueError(f"Cannot parse date: {date_str}")
+
 @api_view(['POST'])
 @parser_classes([MultiPartParser])
 def upload_csv(request):
@@ -25,7 +34,7 @@ def upload_csv(request):
             
         for row in reader:
             BankStatement.objects.create(
-                date=datetime.strptime(row['date'], '%Y-%m-%d').date(),
+                date=parse_date(row['date']),
                 narration=row.get('narration', ''),
                 amount=row['amount'],
                 transaction_type=row.get('type', 'credit').lower()
@@ -42,7 +51,7 @@ def upload_csv(request):
             
         for row in reader:
             InternalLedger.objects.create(
-                date=datetime.strptime(row['date'], '%Y-%m-%d').date(),
+                date=parse_date(row['date']),
                 description=row.get('description', ''),
                 amount=row['amount'],
                 category=row.get('category', 'Uncategorized')
