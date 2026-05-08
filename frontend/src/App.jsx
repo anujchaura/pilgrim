@@ -5,8 +5,10 @@ import { Upload, RefreshCw, LayoutDashboard, List, Activity, Download } from 'lu
 import html2canvas from 'html2canvas';
 import './index.css';
 
-// Point to the live Render backend if VITE_API_URL isn't set
-const API_BASE = import.meta.env.VITE_API_URL || 'https://pilgrim-1.onrender.com/api';
+// Auto-detect: local pe localhost, deployed pe Render
+const API_BASE = window.location.hostname === 'localhost'
+  ? 'http://localhost:8000/api'
+  : 'https://pilgrim-1.onrender.com/api';
 
 const COLORS = ['#0d6efd', '#198754', '#ffc107', '#dc3545', '#6c757d', '#0dcaf0', '#20c997'];
 
